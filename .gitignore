@@ -1,0 +1,20 @@
+# IntelliJ / IDEA
+.idea/
+*.iml
+
+# Build output
+out/
+target/
+build/
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# OS junk
+.DS_Store
+Thumbs.db

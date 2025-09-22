@@ -1,0 +1,59 @@
+/* База */
+:root { --accent: green; color-scheme: light dark; }
+body { margin: 0; font-family: system-ui; color:black; background:white; }
+.container { max-width: 1000px; margin: 0 auto; padding: 16px; }
+
+/* Шапка */
+.topbar { background:#eef8f1; border-bottom:1px solid lightgrey; }
+.topbar h1 { font-family: monospace; color: var(--accent); font-size:20px; margin:0; padding:8px 0; }
+
+/* Блочная вёрстка */
+.grid { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+.row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+
+/* Карточка + заголовки */
+.card { background:white; border:1px solid lightgrey; border-radius:12px; padding:16px; }
+.card > h2 { margin-top:0; }
+main .card h2::after {
+  content:""; display:inline-block; width:6px; height:6px; background:lightgreen; border-radius:50%; margin-left:6px; margin-bottom:3px;
+}
+
+/* Псевдоклассы */
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+input[type="text"], input[type="number"] { padding:6px 8px; }
+button { padding:8px 12px; border:1px solid grey; border-radius:8px; background:white; cursor:pointer; }
+button:hover { background:lightgrey; }               /* псевдокласс */
+input:focus { outline:2px solid var(--accent); }   /* псевдокласс */
+.error { color:red; }
+
+/* Ответ и график */
+.server-view { min-height:140px; border:1px solid black; border-radius:8px; background:white; padding:8px; }
+#plot { width:100%; max-width:100%; border:1px solid black; background:white; }
+.hint { color:black; font-size:14px; }
+
+/* История*/
+.server-view {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.server-view table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.server-view thead th,
+.server-view tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid black;
+}
+
+
+
+
+

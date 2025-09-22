@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ЛР: Попадание точки</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="container">
+        <h1>Бобровский Ярослав — P3120 — Вариант 2001</h1>
+    </div>
+</header>
+
+<main class="container grid">
+    <section class="card">
+        <h2>Форма ввода</h2>
+
+        <form id="hit-form" method="get" action="/fcgi-bin/hello-world.jar">
+            <div class="row">
+                <span class="lbl">X:</span>
+                <div class="choices" id="x-group">
+                    <label><input type="radio" name="x" value="-5">-5</label>
+                    <label><input type="radio" name="x" value="-4">-4</label>
+                    <label><input type="radio" name="x" value="-3">-3</label>
+                    <label><input type="radio" name="x" value="-2">-2</label>
+                    <label><input type="radio" name="x" value="-1">-1</label>
+                    <label><input type="radio" name="x" value="0" checked>0</label>
+                    <label><input type="radio" name="x" value="1">1</label>
+                    <label><input type="radio" name="x" value="2">2</label>
+                    <label><input type="radio" name="x" value="3">3</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="y" class="lbl">Y:</label>
+                <input id="y" name="y" type="number" inputmode="decimal"
+                       step="any" min="-5" max="5" required placeholder="-5…5" />
+            </div>
+
+            <div class="row">
+                <span class="lbl">R:</span>
+                <div class="choices" id="r-group">
+                    <label><input type="radio" name="r" value="1">1</label>
+                    <label><input type="radio" name="r" value="2">2</label>
+                    <label><input type="radio" name="r" value="3" checked>3</label>
+                    <label><input type="radio" name="r" value="4">4</label>
+                    <label><input type="radio" name="r" value="5">5</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" id="submit-btn">Проверить</button>
+                <span id="err" class="error"></span>
+            </div>
+        </form>
+
+        <h3>Ответ сервера </h3>
+        <div id="ajax-box" class="server-view" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+        <h2>График</h2>
+        <canvas id="plot" width="520" height="520"></canvas>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
