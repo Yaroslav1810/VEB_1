@@ -28,12 +28,24 @@ public class MiniServer {
             try {
                 HashMap<String, String> map = new HashMap<>();
                 long t0 = System.nanoTime();
+                String query = FCGIInterface.request.params.getProperty("QUERY_STRING");
+
+                if ("POST".equalsIgnoreCase(FCGIInterface.request.params.getProperty("REQUEST_METHOD"))) {
+                    boolean isClear = query != null && query.contains("action=clear");
+                    if (isClear) {
+                        RESPONSES.clear();
+                        sendHtml(204, "");
+                    } else {
+                        sendHtml(400, "unsupported POST");
+                    }
+                    continue;
+                }
 
                 if (!"GET".equalsIgnoreCase(FCGIInterface.request.params.getProperty("REQUEST_METHOD"))) {
                     sendHtml(400,"Error: wrong method, expected GET");
                     continue;
                 }
-                String query = FCGIInterface.request.params.getProperty("QUERY_STRING");
+
                 if (query == null || query.trim().isEmpty()) {
                     sendHtml(400,"params are null, expected number");
                     continue;
@@ -132,6 +144,7 @@ public class MiniServer {
             byte[] body = html.getBytes(java.nio.charset.StandardCharsets.UTF_8);
             System.out.print("Status: " + code(status) + "\r\n");
             System.out.print("Content-Type: text/html; charset=UTF-8\r\n");
+            System.out.print("Access-Control-Allow-Origin: *\r\n");
             System.out.print("Cache-Control: no-store\r\n");
             System.out.print("Content-Length: " + body.length + "\r\n");
             System.out.print("\r\n");
@@ -143,6 +156,7 @@ public class MiniServer {
     private static String code(int status){
         return switch (status){
             case 200 -> "200 OK";
+            case 204 -> "204 No Content";
             case 400 -> "400 Bad Request";
             default -> status + "ok";
         };

@@ -123,4 +123,29 @@ form.addEventListener('submit', async (e)=>{
     err.textContent = 'Сеть/сервер недоступны';
     box.textContent = '';
   }
+})
+const clearBtn = document.getElementById('clear-btn');
+clearBtn.addEventListener('click', async () => {
+  err.textContent = '';
+  box.textContent = 'Очищаю…';
+
+  try {
+    const url = "/~s465235/fcgi_proxy.php" + '?action=clear';
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Accept': 'text/html' },
+      cache: 'no-store'
+    });
+
+    const text = await res.text();
+    if (!res.ok) {
+      box.innerHTML = text || `Не удалось очистить (HTTP ${res.status})`;
+      return;
+    }
+    box.textContent = '';
+  } catch {
+    err.textContent = 'Сеть/сервер недоступны';
+    box.textContent = '';
+  }
 });

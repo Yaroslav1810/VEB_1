@@ -17,7 +17,7 @@
     <section class="card">
         <h2>Форма ввода</h2>
 
-        <form id="hit-form" method="get" action="/fcgi-bin/hello-world.jar">
+        <form id="hit-form" method="get" action="/~s465235/fcgi_proxy.php">
             <div class="row">
                 <span class="lbl">X:</span>
                 <div class="choices" id="x-group">
@@ -49,11 +49,11 @@
                     <label><input type="radio" name="r" value="5">5</label>
                 </div>
             </div>
-
-            <div class="row">
-                <button type="submit" id="submit-btn">Проверить</button>
-                <span id="err" class="error"></span>
-            </div>
+                <div class="row">
+                    <button type="submit" id="submit-btn">Проверить</button>
+                    <button type="button" id="clear-btn">Очистить историю</button>
+                    <span id="err" class="error"></span>
+                </div>
         </form>
 
         <h3>Ответ сервера </h3>
